@@ -87,6 +87,7 @@ words = ('ant baboon badger bat bear beaver camel cat clam cobra cougar '
 
 random_word = random. choice(words)
 #print(random_word)
+random_word_into_list = random_word.split()
 
 length = len(random_word)
 #print(length)
@@ -96,8 +97,24 @@ dashes = (dash*length)
 print(dashes)
 
 
-def guess():
-    user_guess = print(str(input('Guess a letter: \n')))
-    
-user_guess = print(str(input('Guess a letter: \n')))
+def guess(word, current_display):
+    user_guess = input('Guess a letter: \n').lower()
+    new_display = ''
+    display_list = list(current_display.replace(" ", ""))        
+    for i in range(len(word)):
+        
+        if word[i] == user_guess:
+            display_list[i] = user_guess    
+            
+            new_display = ' '.join(display_list)
+            return new_display
+
+
+random_word = random.choice(words)
+dashes = '_ ' * len(random_word)
+dashes = dashes.strip()  
+
+while True:
+    print(dashes)
+    dashes = guess(random_word, dashes)
     
